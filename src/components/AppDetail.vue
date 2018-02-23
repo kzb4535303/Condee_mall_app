@@ -1,42 +1,32 @@
 <template >
   <div id="app-container">
       <!-- 头部信息 -->
-    <el-header id="app-header" class="commonColor">
-      <el-row :gutter="20">
+    <div id="app-header" class="commonColor">
+      <div class=" flex-row" >
         <!--logo-->
-        <el-col :span="8"><div class="grid-content bg-purple">
-          <img style="width: 100%;height: 60px;" src="../assets/img/logo.jpg" alt="">
-        </div></el-col>
+        <div class="flex-1">
+          <div class="acfun-logo"></div>
+        </div>
         <!--视频渠道选择-->
-        <el-col :span="8"><div class="grid-content bg-purple">
-          <div class="source-select">
-            <el-row>
-              <el-col :span="12">
-                <div @click="changeSource('recommend')" class="acfun-btn" :class="{'acfun-color':recommendSource}">
-                  推荐
-                </div>
-              </el-col>
-              <el-col :span="12">
-              <div @click="changeSource('partition')" class="acfun-btn" :class="{'acfun-color':!recommendSource}">
-                分区
-              </div>
-              </el-col>
-            </el-row>
+        <div class="flex-1">
+          <div class="source-select flex-row">
+            <div @click="changeSource('recommend')" class="acfun-btn flex-1" :class="{'acfun-color':recommendSource}">推荐</div>
+            <div @click="changeSource('partition')" class="acfun-btn flex-1" :class="{'acfun-color':!recommendSource}">分区</div>
           </div>
-        </div></el-col>
+        </div>
         <!--游戏中心和查找-->
-        <el-col :span="8">
-          <div class="grid-content bg-purple">
-            <svg style="margin-top: 12px;color: #ffffff" class="icon" aria-hidden="true">
+        <div class="flex-1 ">
+          <div class="grid-content bg-purple ">
+            <svg style="margin-top: 6px;color: #ffffff" class="icon" aria-hidden="true">
               <use xlink:href="#icon-game"></use>
             </svg>
-            <svg style="margin-top: 12px;color: #ffffff;margin-left: 10px;" class="icon" aria-hidden="true">
+            <svg style="margin-top: 6px;color: #ffffff;margin-left: 10px;" class="icon" aria-hidden="true">
               <use xlink:href="#icon-search"></use>
             </svg>
           </div>
-        </el-col>
-      </el-row>
-    </el-header>
+        </div>
+      </div>
+    </div>
     <!--内容-->
   <el-main>
     <router-view></router-view>
@@ -76,18 +66,12 @@ export default {
 </script>
 
 <style scoped>
-#app-container{
-  height: 100%;
-  position: relative;
-}
-#app-footer{
-  border-top: solid 1px #eee;
-  position: absolute;
-  bottom:0;
-  width: 100%;
+#app-header{
+  height: 40px;
+  overflow: hidden;
 }
 .source-select{
-  margin-top: 12px;
+  margin-top: 6px;
   width: 100%;
   height:30px;
   line-height: 28px;
@@ -97,6 +81,13 @@ export default {
   .acfun-btn{
     margin: 1px;
     border-radius: 14px;
+  }
+  .acfun-logo{
+    width: 100%;
+    height: 40px;
+    background-image:url("../assets/img/logo.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
   }
 
 </style>

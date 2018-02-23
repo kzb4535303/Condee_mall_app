@@ -1,5 +1,5 @@
 .commonColor{
-    background-color:#fd4b5c;
+    background-color:#fd4b5c !important;
   }
 .acfun-color{
   background-color:#fd4b5c;
@@ -11,4 +11,14 @@
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
+}
+
+.flex-row{
+  display: flex;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.flex-1{
+  flex: 1;
+  margin:0 1rem;
 }
