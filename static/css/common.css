@@ -1,0 +1,14 @@
+.commonColor{
+    background-color:#fd4b5c;
+  }
+.acfun-color{
+  background-color:#fd4b5c;
+  color: #ffffff;
+}
+/*引入iconfont*/
+.icon {
+  width: 2.2em; height: 2.2em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
