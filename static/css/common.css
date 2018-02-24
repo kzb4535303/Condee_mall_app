@@ -1,9 +1,17 @@
 .commonColor{
     background-color:#fd4b5c !important;
   }
+ul,ol{
+  padding: 0 !important;
+  margin:0!important;
+}
+li {list-style-type:none;}
 .acfun-color{
   background-color:#fd4b5c;
   color: #ffffff;
+}
+.color-acfun{
+  color:#fd4b5c;
 }
 /*引入iconfont*/
 .icon {
@@ -22,3 +30,23 @@
   flex: 1;
   margin:0 1rem;
 }
+.clearfloat:after{display:block;clear:both;content:"";visibility:hidden;height:0}
+.clearfloat{zoom:1}
+
+.fl{
+  float: left;
+}
+.divCenter{
+  margin: 0 auto;
+}
+.fr{
+  float: right;
+}
+.isfixedTop{
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index: 1;
+}
+
