@@ -3,10 +3,10 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
-    switchTabsValueStore: 'source'
+    switchTabsValueStore: 'newhouse'
   },
   mutations: {
-    handleTheTabs (state, value) {
+    handleTheTabs(state, value) {
       state.switchTabsValueStore = value
     }
   }

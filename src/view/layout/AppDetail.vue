@@ -3,7 +3,7 @@
   <div id="app-container">
     <!-- 头部信息 -->
     <!--视频资源头部-->
-    <div v-if="switchTabsValueStore=='source'" id="app-header" class="commonColor">
+    <div v-if="switchTabsValueStore=='newhouse'" class="app-header commonColor">
       <div class=" flex-row" >
         <!--logo-->
         <div class="flex-1">
@@ -31,7 +31,7 @@
       </div>
     </div>
     <!--文章头部-->
-    <div v-if="switchTabsValueStore=='article'" id="app-header" class="commonColor flex-row centerTitle">
+    <div v-if="switchTabsValueStore=='article'" class="app-header commonColor flex-row centerTitle">
       <div style="flex: .5;"></div>
       <div class="flex-1">文章</div>
       <div style="flex: .5" >
@@ -45,9 +45,10 @@
     </div>
     <!--内容-->
     <!-- 尾部信息 -->
-      <mt-tabbar id="app-footer"  v-model="switchTabsValue">
-        <mt-tab-item @click="switchTheTab('source')" id="source">
-          <div :class="{'color-acfun':switchTabsValue=='source'}">
+    <div id="app-footer">
+      <mt-tabbar   v-model="switchTabsValue">
+        <mt-tab-item @click="switchTheTab('newhouse')" id="newhouse">
+          <div :class="{'color-acfun':switchTabsValue=='newhouse'}">
             <svg  class="icon" aria-hidden="true">
               <use xlink:href="#icon-ufo"></use>
             </svg>
@@ -88,27 +89,31 @@
           </div>
         </mt-tab-item>
       </mt-tabbar>
+    </div>
+
   </div>
 </template>
 
 <script>
-import '../assets/iconfont-tabbar'
-import {mapMutations} from 'vuex'
+import '@/assets/iconfont-tabbar'
+import { mapMutations } from 'vuex'
 export default {
   name: 'appdetail',
-  data () {
+  data() {
     return {
       recommendSource: true,
-      switchTabsValue: 'source'
+      switchTabsValue: 'newhouse'
     }
   },
-  mounted () {},
-  created () {
-    this.$router.push({name: 'source'})
+  mounted() {
+
+  },
+  created() {
+
   },
   methods: {
     ...mapMutations(['handleTheTabs']),
-    changeSource (value) {
+    changeSource(value) {
       switch (value) {
         case 'recommend':
           this.recommendSource = true
@@ -118,19 +123,22 @@ export default {
           break
       }
     },
+    switchTheTab(value) {
+      this.$router.push({ name: value })
+    }
   },
   watch: {
-    switchTabsValue (val) {
+    switchTabsValue(val) {
       /*
       * 改变公共状态
       * */
       this.handleTheTabs(val)
-      this.$router.push({name: val})
+      this.$router.push({ name: val })
     }
 
   },
   computed: {
-    switchTabsValueStore () {
+    switchTabsValueStore() {
       return this.$store.state.switchTabsValueStore
     }
   }
@@ -143,7 +151,7 @@ export default {
   display: flex;
   flex-direction: column;
 }
-#app-header{
+.app-header{
   overflow: hidden;
   width: 100%;
   flex: 0 0 40px;
@@ -167,13 +175,13 @@ export default {
 .acfun-logo{
   width: 100%;
   height: 40px;
-  background-image:url("../assets/img/logo.jpg");
+  background-image:url("../../assets/img/logo.jpg");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
 #app-footer{
   border-top: solid 1px #eeeeee;
-  flex: 0 0 60px;
+  flex: 0 0 54px;
   width: 100%;
 }
 .centerTitle{

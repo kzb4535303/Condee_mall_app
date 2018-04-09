@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import AppDetail from '@/components/AppDetail'
-import SourceIndex from '@/components/SourceIndex'
-import ArticleIndex from '@/components/ArticleIndex'
+import AppDetail from '@/view/layout/AppDetail'
+import NewHouse from '@/view/newHouse/NewHouse'
+import ArticleIndex from '@/view/article/ArticleIndex'
 
 Vue.use(Router)
 
@@ -13,8 +13,8 @@ export default new Router({
       name: 'appDetail',
       component: AppDetail,
       children: [
-        {path: 'source', name: 'source', component: SourceIndex},
-        {path: 'article', name: 'article', component: ArticleIndex}
+        { path: 'newhouse', name: 'newhouse', component: NewHouse },
+        { path: 'article', name: 'article', component: ArticleIndex }
       ]
     }
   ]

@@ -1,32 +1,25 @@
 <template>
   <div id="source-index">
     <!-- 头部信息 -->
-    <mt-tab-container v-model="active">
-      <mt-tab-container-item id="tab-container1">
-      123123123
-      </mt-tab-container-item>
-      <mt-tab-container-item id="tab-container2">
-       321321321
-      </mt-tab-container-item>
-      <mt-tab-container-item id="tab-container3">
-       321321321
-      </mt-tab-container-item>
-    </mt-tab-container>
   </div>
 </template>
 
 <script>
-import '../assets/iconfont-game'
-import '../assets/iconfont-search'
+import '@/assets/iconfont-game'
+import '@/assets/iconfont-search'
+
 export default {
   name: 'sourceindex',
-  data () {
+  data() {
     return {
-      recommendSource: true
+      recommendSource: true,
+      active: ''
     }
   },
+  created() {
+  },
   methods: {
-    changeSource (value) {
+    changeSource(value) {
       switch (value) {
         case 'recommend':
           this.recommendSource = true
