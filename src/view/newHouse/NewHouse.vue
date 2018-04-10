@@ -7,13 +7,24 @@
           v-infinite-scroll="loadMore"
           infinite-scroll-disabled="loading"
           infinite-scroll-distance="10">
-          <li :key="index"  v-for="(item, index) in dataList">
-            <div  class="flex-row am-center am-margin-bottom-xs">
-              <div style="position: relative">
-                <img @click="houseDetail(item, index)" v-lazy="item.images.small" alt="">
-                <div style="position: absolute;top: 0;width: 100%;height: 200px;background-color: black;opacity: .2;color: #fff">
-                  123123123
-                </div>
+          <li class="shadow" style="margin:5%" :key="index"  v-for="(item, index) in dataList">
+            <div   class=" am-center am-margin-bottom-x">
+              <!-- 图片 -->
+              <div style="margin:10px 0">
+                  <img  :src="item.images.small">
+              </div>
+              <!-- 文字介绍 -->
+              <div>
+                <h2>
+                  {{item.title}}
+                    <span style="font-size:12px;">评分: {{item.rating.average}}分</span>
+                </h2>
+                <p>
+                  主演：
+                  <span v-for="(actor, index) in item.casts">
+                    {{actor.name}}
+                  </span>
+                </p>
               </div>
             </div>
           </li>
@@ -44,6 +55,10 @@ export default {
         count: this.count
       }
       getNewhouseListApi(params).then((res) => {
+        if(!res.subjects.length) {
+            this.loading = false;
+            return
+        }
         this.dataList = this.dataList.concat(res.subjects);
         console.log(this.dataList)
         this.loading = false;
@@ -80,5 +95,9 @@ export default {
     width: 40px;
     height: 300px;
     margin: auto;
+  }
+  .shadow{
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+    border: 1px solid #ebeef5
   }
 </style>
