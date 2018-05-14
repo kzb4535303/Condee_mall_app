@@ -1,7 +1,7 @@
 <template>
   <div id="source-index">
     <div id="source-container">
-      <!--视频资源推荐总览-->
+      <!-- 房产资源推荐总览-->
       <div class="acfun-swipe">
         <ul
           v-infinite-scroll="loadMore"

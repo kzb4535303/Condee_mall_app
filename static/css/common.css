@@ -1,5 +1,5 @@
 .commonColor{
-    background-color:#fd4b5c !important;
+    background-color:#409EFF !important;
   }
 ul,ol{
   padding: 0 !important;
@@ -7,15 +7,15 @@ ul,ol{
 }
 li {list-style-type:none;}
 .acfun-color{
-  background-color:#fd4b5c;
+  background-color:#409EFF;
   color: #ffffff;
 }
 .color-acfun{
-  color:#fd4b5c;
+  color:#409EFF;
 }
 /*引入iconfont*/
 .icon {
-  width: 2.2em; height: 2.2em;
+  width: 1.8em; height: 2.4em;
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;

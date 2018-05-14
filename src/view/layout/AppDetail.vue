@@ -2,7 +2,7 @@
 <template >
   <div id="app-container">
     <!-- 头部信息 -->
-    <!--视频资源头部-->
+    <!--新房资源头部-->
     <div v-if="switchTabsValueStore=='newhouse'" class="app-header commonColor">
       <div class=" flex-row" >
         <!--logo-->
@@ -12,16 +12,13 @@
         <!--视频渠道选择-->
         <div class="flex-1">
           <div class="source-select flex-row">
-            <div @click="changeSource('recommend')" class="acfun-btn flex-1" :class="{'acfun-color':recommendSource}">推荐</div>
-            <div @click="changeSource('partition')" class="acfun-btn flex-1" :class="{'acfun-color':!recommendSource}">分区</div>
+            <div @click="changeSource('newHome')" class="acfun-btn flex-1" :class="{'acfun-color':recommendSource}">新房</div>
+            <div @click="changeSource('ownerHouse')" class="acfun-btn flex-1" :class="{'acfun-color':!recommendSource}">二手房</div>
           </div>
         </div>
         <!--游戏中心和查找-->
         <div class="flex-1 ">
           <div class="grid-content bg-purple ">
-            <svg style="margin-top: 6px;color: #ffffff" class="icon" aria-hidden="true">
-              <use xlink:href="#icon-game"></use>
-            </svg>
             <svg style="margin-top: 6px;color: #ffffff;margin-left: 14px;" class="icon" aria-hidden="true">
               <use xlink:href="#icon-search"></use>
             </svg>
@@ -47,45 +44,16 @@
     <!-- 尾部信息 -->
     <div id="app-footer">
       <mt-tabbar   v-model="switchTabsValue">
-        <mt-tab-item @click="switchTheTab('newhouse')" id="newhouse">
-          <div :class="{'color-acfun':switchTabsValue=='newhouse'}">
+        <mt-tab-item v-for="(item, index) in footerInfos" @click="switchTheTab(item.value)" :id="item.value">
+          <!-- icon -->
+          <div  :class="{'color-acfun':switchTabsValue== item.value}">
             <svg  class="icon" aria-hidden="true">
-              <use xlink:href="#icon-ufo"></use>
+              <use :xlink:href="'#' + item.icon"></use>
             </svg>
           </div>
+          <!-- title -->
           <div>
-            视频
-          </div>
-        </mt-tab-item>
-        <mt-tab-item @click="switchTheTab('article')"  id="article">
-          <div :class="{'color-acfun':switchTabsValue=='article'}">
-            <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-wenzhang"></use>
-            </svg>
-          </div>
-          <div>
-            文章
-          </div>
-        </mt-tab-item>
-        <mt-tab-item @click="switchTheTab('news')" id="news">
-          <div :class="{'color-acfun':switchTabsValue=='news'}">
-            <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-xiangjiao"></use>
-            </svg>
-          </div>
-          <div>
-            动态
-          </div>
-
-        </mt-tab-item>
-        <mt-tab-item @click="switchTheTab('user')" id="user">
-          <div :class="{'color-acfun':switchTabsValue=='user'}">
-            <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-face"></use>
-            </svg>
-          </div>
-          <div>
-            我
+            {{item.title}}
           </div>
         </mt-tab-item>
       </mt-tabbar>
@@ -102,7 +70,13 @@ export default {
   data() {
     return {
       recommendSource: true,
-      switchTabsValue: 'newhouse'
+      switchTabsValue: 'newhouse',
+      footerInfos: [
+        { title: '住房', value: 'newhouse', icon: 'icon-fangwuxinxi' },
+        { title: '评测', value: 'article', icon: 'icon-pingce' },
+        { title: '动态', value: 'news', icon: 'icon-dongtai' },
+        { title: '我', value: 'user', icon: 'icon-wo' }
+      ]
     }
   },
   mounted() {
@@ -115,10 +89,10 @@ export default {
     ...mapMutations(['handleTheTabs']),
     changeSource(value) {
       switch (value) {
-        case 'recommend':
+        case 'newHome':
           this.recommendSource = true
           break
-        case 'partition':
+        case 'ownerHouse':
           this.recommendSource = false
           break
       }
@@ -160,6 +134,9 @@ export default {
   flex:1;
   overflow: scroll;
 }
+
+
+
 .source-select{
   margin-top: 6px;
   width: 100%;
@@ -175,7 +152,7 @@ export default {
 .acfun-logo{
   width: 100%;
   height: 40px;
-  background-image:url("../../assets/img/logo.jpg");
+  background-image:url("../../assets/img/logo.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
@@ -188,7 +165,12 @@ export default {
   justify-content: center;
   align-items: center;
 }
+.mint-tabbar {
+ background-color: white;
+  box-shadow: 0px -2px 12px 0 rgba(0,0,0,.1);
+}
   .rightSearch{
    align-self: flex-end;
   }
 </style>
+
